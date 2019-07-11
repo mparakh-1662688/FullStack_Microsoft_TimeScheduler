@@ -1,6 +1,6 @@
 <template>
     <div class='calendar__day'>
-        <div class='title'> {{ dateObj.toDateString() }} </div>
+        <div class='title'> {{ dateObj.toUTCString().split(" ").slice(0,4).join(" ") }} </div>
         <div class='events'>
             <Event v-for="eventItem in eventList" :thisEvent="eventItem" :key="eventItem.id" />
         </div>

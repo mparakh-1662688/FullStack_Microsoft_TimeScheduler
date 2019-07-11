@@ -25,7 +25,8 @@ export default {
     name: 'Login',
     data: () => {
         return {
-            credentials: {},
+            credentials: {
+            },
             loginError: '',
             working: false
         }
@@ -35,7 +36,7 @@ export default {
     },
     methods: {
         login: function( evt ) {
-            if( this.credentials.username && this.credentials.password ) {
+            if( this.credentials.username && this.credentials.password) {
                 const bearerToken = btoa( `${this.credentials.username}:${this.credentials.password}` );
                 this.working = true;
                 this.$store.dispatch( 'checkBasicToken', bearerToken ).then( ( resp ) => {
