@@ -42,7 +42,6 @@ export default {
     },
     created: function() {
         this.jsDate = new Date( Date.parse( this.thisEvent.dateTime ) )
-
     }
 }
 </script>

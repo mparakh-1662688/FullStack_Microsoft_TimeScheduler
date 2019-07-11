@@ -3,15 +3,9 @@ var app = express()
 var routes = require('./routes')
 var bodyparser = require('body-parser')
 var cors = require('cors')
-var check = require('./routes/auth')
-var login = require('./routes/login')
-
-app.use(bodyparser())
-app.use(cors())
 
 
-app.get('/check',login)
-app.all('/*',check, routes)
+
 app.use((req,res) => res.sendStatus(404))
 
 
