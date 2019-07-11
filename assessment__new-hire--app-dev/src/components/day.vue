@@ -1,6 +1,6 @@
 <template>
     <div class='calendar__day'>
-        <div class='title'> {{ dateObj.toUTCString().split(" ").slice(0,4).join(" ") }} </div>
+        <div class='title'> {{ dateObj }} </div>
         <div class='events'>
             <Event v-for="eventItem in eventList" :thisEvent="eventItem" :key="eventItem.id" />
         </div>
@@ -22,7 +22,9 @@ export default {
     },
     computed: {
         dateObj() {
-            return new Date( Date.parse( this.dateTime || 0 ) )
+            let wrongFormat = new Date( Date.parse( this.dateTime || 0 ));
+            let rightFormat = wrongFormat.toUTCString().split(" ").slice(0,4).join(" ");
+            return rightFormat;
         }
     }
 }

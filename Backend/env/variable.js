@@ -1,1 +1,2 @@
-module.exports = "basic bTpw";
+let hashString = "basic bTpw";
+module.exports = hashString;

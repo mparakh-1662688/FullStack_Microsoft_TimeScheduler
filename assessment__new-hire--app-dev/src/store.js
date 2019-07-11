@@ -26,6 +26,7 @@ export default new Vuex.Store({
             state.basicToken = `basic ${token}`;
         },
         updateList: function( state, list ) {
+            console.log(list);
             let tempArray = [];
             let finalJson = [];
             let events = [];
@@ -56,6 +57,7 @@ export default new Vuex.Store({
               }
             }
 
+            console.log(finalJson)
             state.events = finalJson;
         }
     },

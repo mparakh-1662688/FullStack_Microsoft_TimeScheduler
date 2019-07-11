@@ -7,7 +7,6 @@ var updateReq = async (req, res) => {
     extention = 'update/' + req.params.id
 
     let overlaps = await helperConflict(req)
-    console.log("ol - ", overlaps)
     if ( !overlaps ) {
         res.status( 409 ).json( { "msg": "Overlaps"} )
         return;
