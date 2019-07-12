@@ -20,18 +20,12 @@ let conflict = async (req) => {
         const res = await ans('peek' )
         let isConflict = true;
         for (let i = 0; i < res.message.length; i++) {
-            console.log(res.message[i].data[0])
-
             let subArray = res.message[i].data[0];
             let newDate = subArray.dateTime;
             let onlyDate = newDate.split("T")[0];
-
-            console.log(onlyDate);
             let nST = new Date(newDate);
             let nDur = parseInt(subArray.duration)
-            let nET = new Date(nST.getTime() + nDur*60000);
-            console.log(nST, nET)
-            console.log(gST, gET)
+            let nET = new Date(nST.getTime() + nDur*60000); 
             nET = nET.getTime()
             nST = nST.getTime();
 
@@ -42,27 +36,22 @@ let conflict = async (req) => {
             // if dates are the same
             if (givenOnlyDate === onlyDate ) {
                 // left-side overlap
-                console.log("In loop")
                 if (nST >= gST && nST <= gET) {
-                    console.log(1)
                     isConflict = false
                 }
 
                 // inside overlap
                 if (nST <= gST && nET >= gET) {
-                    console.log(2)
                     isConflict = false
                 }
 
                 // outside overlap
                 if (nST >= gST && gET >= nET) {
-                    console.log(3, " ", nST, gST)
                     isConflict = false
                 }
 
                 // right-side overlap
                 if (nST <= gST && gST <= nET ) {
-                    console.log(4, " ", nST, gST)
                     isConflict = false
                 }
 

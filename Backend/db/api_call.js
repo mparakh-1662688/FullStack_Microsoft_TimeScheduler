@@ -29,12 +29,9 @@ let ans = (type, methodType, body) => {
                 return;
             }
             if ( body ) {
-              resolve( JSON.parse(body));
+              resolve( JSON.parse( body ));
             }
 
-
-
-    
         });
     });
     
