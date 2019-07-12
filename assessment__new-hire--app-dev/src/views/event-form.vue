@@ -31,7 +31,7 @@ import VueCtkDateTimePicker from 'vue-ctk-date-time-picker';
 import 'vue-ctk-date-time-picker/dist/vue-ctk-date-time-picker.min.css';
 import Spinner from '@/components/spinner';
 
-const requiredProps = [ 'name', 'dateTime', 'duration' ];
+let requiredProps = [ 'name', 'dateTime', 'duration' ];
 
 export default {
     name: 'EventForm',
@@ -65,7 +65,7 @@ export default {
                 this.$router.push( '/' );
             }).catch( err => {
                 this.working = false;
-                const message = err.response ? err.response.data.msg : err.message || 'Unknown Error';
+                let message = err.response ? err.response.data.msg : err.message || 'Unknown Error';
                 this.$toasted.show(
                   message,
                   {

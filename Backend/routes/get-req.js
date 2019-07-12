@@ -1,16 +1,12 @@
-const ans = require('../db/api_call');
+let ans = require( '../db/api_call' );
 
-
-var getReq = async (req, res) => {
-
+let getReq = async ( req, res ) => {
     try {
-        const data = await ans('peek');
-        res.send(data);
+        let data = await ans( 'peek' );
+        res.send( data );
     } catch( err ) {
         console.log( err );
     }
-
-
 }
 
 module.exports = getReq;

@@ -1,26 +1,20 @@
-const ans = require('../db/api_call');
-const helperConflict = require('../helpers/conflict')
+let ans = require( '../db/api_call' );
+let helperConflict = require( '../helpers/conflict' )
 
-
-var updateReq = async (req, res) => {
+let updateReq = async ( req, res ) => {
     let extention = ""
     extention = 'update/' + req.params.id
-
-    let overlaps = await helperConflict(req)
-    if ( !overlaps ) {
+    let areOverlaps = await helperConflict( req )
+    if ( !areOverlaps ) {
         res.status( 409 ).json( { "msg": "Overlaps"} )
         return;
     }
-    
-
     try {
-        const data = await ans(extention, 'PUT', JSON.stringify(req.body));
-        res.send(data);
+        let data = await ans( extention, 'PUT', JSON.stringify( req.body ) );
+        res.send( data );
     } catch( err ) {
         console.log( err );
     }
-
-
 }
 
 module.exports = updateReq

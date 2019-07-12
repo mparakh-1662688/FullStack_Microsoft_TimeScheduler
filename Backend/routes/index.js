@@ -1,26 +1,21 @@
-const router = require('express').Router()
-const getReq = require('./get-req')
-const postReq = require('./post-req')
-const deleteReq = require('./delete-req')
-const createReq = require('./create-req')
-const updateReq = require('./update-req')
-const check = require('./auth')
+let router = require( 'express' ).Router()
+let getReq = require( './get-req' )
+let postReq = require( './post-req' )
+let deleteReq = require( './delete-req' )
+let createReq = require( './create-req' )
+let updateReq = require( './update-req' )
+let check = require( './auth' )
 
+router.get( '/peek', getReq )
 
-router.get('/peek', getReq)
+router.get( '/check', check )
 
-router.get('/peek', getReq)
+router.get( '/read/:id', postReq )
 
-router.get('/check', check)
+router.delete( '/remove/:id', deleteReq )
 
-router.get('/read/:id', postReq)
+router.post( '/create/:id', createReq )
 
-router.delete('/remove/:id', deleteReq)
-
-router.post('/create/:id', createReq)
-
-router.put('/update/:id', updateReq)
-
-
+router.put( '/update/:id', updateReq )
 
 module.exports = router;

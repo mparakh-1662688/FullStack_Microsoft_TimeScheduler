@@ -1,5 +1,4 @@
-let request = require('request-promise')
-
+let request = require( 'request-promise' )
 let options;
 
 reset = () => {
@@ -13,16 +12,16 @@ reset = () => {
   }
 }
  
-let ans = (type, methodType, body) => {
+let ans = ( type, methodType, body ) => {
     reset()
     options.url = options.url + type
     options.method = methodType
-    if (body) {
+    if ( body ) {
       options["body"] = body
     }
     options["body"] = body
     return new Promise( ( resolve, reject ) => {
-        request(options, function(error, response, body) {
+        request( options, function( error, response, body ) {
 
             if( error ) { 
                 reject( error ); 
@@ -31,10 +30,8 @@ let ans = (type, methodType, body) => {
             if ( body ) {
               resolve( JSON.parse( body ));
             }
-
         });
     });
-    
 }
 
 module.exports = ans
