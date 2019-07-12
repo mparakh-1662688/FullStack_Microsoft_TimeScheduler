@@ -1,4 +1,4 @@
-<template>
+        <template>
     <div class='eventForm'>
         <h1 v-if="!this.modify">Create Event</h1>
         <h1 v-else>Modify Event</h1>
@@ -65,7 +65,7 @@ export default {
                 this.$router.push( '/' );
             }).catch( err => {
                 this.working = false;
-                const message = err.response ? err.response.data : err.message || 'Unknown Error';
+                const message = err.response ? err.response.data.msg : err.message || 'Unknown Error';
                 this.$toasted.show(
                   message,
                   {
